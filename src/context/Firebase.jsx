@@ -4,6 +4,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { getDatabase, set, ref } from "firebase/database";
 
@@ -16,7 +17,7 @@ const firebaseConfig = {
   appId: "1:865000836606:web:ce446724435098ed9f44af",
   databaseUrl: "https://app-83d70-default-rtdb.firebaseio.com",
 };
-const firebaseApp = initializeApp(firebaseConfig);
+export const firebaseApp = initializeApp(firebaseConfig);
 const FirebaseContext = createContext(null);
 
 const firebaseAuth = getAuth(firebaseApp);
@@ -35,6 +36,7 @@ export const FirebaseProvider = ({ children }) => {
   const putData = (key, data) => {
     set(ref(database, "users/saad"), data);
   };
+
   return (
     <FirebaseContext.Provider
       value={{

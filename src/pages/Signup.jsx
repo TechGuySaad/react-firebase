@@ -1,9 +1,5 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { app } from "../firebase";
 import { useState } from "react";
 import { useFirebase } from "../context/Firebase";
-
-const auth = getAuth(app);
 
 const SignupPage = () => {
   const [email, setEmail] = useState("");
@@ -11,9 +7,6 @@ const SignupPage = () => {
 
   const { signupUserWithEmailAndPassword } = useFirebase();
   const createUser = () => {
-    // createUserWithEmailAndPassword(auth, email, password).then((val) =>
-    //   alert("Success")
-    // );
     signupUserWithEmailAndPassword(email, password);
   };
   return (
