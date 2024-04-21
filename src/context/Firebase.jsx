@@ -33,7 +33,7 @@ export const FirebaseProvider = ({ children }) => {
     );
   };
   const putData = (key, data) => {
-    set(ref(database, key), data);
+    set(ref(database, "users/saad"), data);
   };
   return (
     <FirebaseContext.Provider
