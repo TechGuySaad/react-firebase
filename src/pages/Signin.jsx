@@ -1,24 +1,19 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { app } from "../firebase";
 import { useState } from "react";
+
 import { useFirebase } from "../context/Firebase";
 
-const auth = getAuth(app);
-
-const SignupPage = () => {
+const SigninPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { signupUserWithEmailAndPassword } = useFirebase();
-  const createUser = () => {
-    // createUserWithEmailAndPassword(auth, email, password).then((val) =>
-    //   alert("Success")
-    // );
-    signupUserWithEmailAndPassword(email, password);
+  const { signinUserWithEmailAndPassword } = useFirebase();
+
+  const loginUser = () => {
+    signinUserWithEmailAndPassword(email, password);
   };
   return (
-    <div className="signup-page">
-      <h1>Sign Up Page</h1>
+    <div className="signin-page">
+      <h1>Sign In Page</h1>
       <label>Email</label>
       <input
         onChange={(e) => {
@@ -39,9 +34,9 @@ const SignupPage = () => {
         placeholder="Enter your password..."
         required
       />
-      <button onClick={createUser}>Sign Up</button>
+      <button onClick={loginUser}>Log in</button>
     </div>
   );
 };
 
-export default SignupPage;
+export default SigninPage;
